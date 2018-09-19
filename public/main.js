@@ -4,19 +4,26 @@ const addWeatherToPage = weather => {
 
   // make an LI
   let weatherLI = document.createElement('li')
-  weatherLI.textContent = `${weather.main.temp}F`
+  weatherLI.textContent = `${weather.main.temp} F`
   // append that LI to the people UL
   weatherView.appendChild(weatherLI)
 
   let weatherLIHumidity = document.createElement('li')
-  weatherLIHumidity.textContent = `${weather.main.humidity}Humidity`
+  weatherLIHumidity.textContent = `${weather.main.humidity} Humidity`
   // append that LI to the people UL
   weatherView.appendChild(weatherLIHumidity)
 
   let weatherLICity = document.createElement('li')
-  weatherLICity.textContent = `${weather.name} City`
+  weatherLICity.textContent = `City: ${weather.name}`
   // append that LI to the people UL
   weatherView.appendChild(weatherLICity)
+
+  weatherAttributes.weather.forEach(weatherCondition => {
+    let weatherAttributes = document.createElement('li')
+    weatherAttributes.textContent = `${weather.weather.main}`
+    weatherView.appendChild(weatherAttributes)
+  })
+  // append that LI to the people UL
 }
 
 // create a search bar with a clickable button
