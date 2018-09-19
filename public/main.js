@@ -1,28 +1,30 @@
+class WeatherList {
+  constructor (parentSelector) {
+    console.log(parentSelector)
+    this.parent = document.querySelector(parentSelector)
+    console.log(this.parent)
+  }
+
+  addWeather (message) {
+    const msg = document.createElement('li')
+    msg.textContent = message
+    msg.classList.add('weather-message')
+    this.parent.appendChild(msg)
+  }
+}
+
 const addWeatherToPage = weather => {
-  // get the people UL dom object
-  let weatherView = document.querySelector('.weather')
+  const weatherList = new WeatherList('.weather')
+  weatherList.addWeather(`Currently: ${weather.main.temp} F`)
+  weatherList.addWeather(`High: ${weather.main.temp_max}`)
+  weatherList.addWeather(`Low: ${weather.main.temp_min}`)
+  weatherList.addWeather(`${weather.main.humidity}% Humidity`)
+  weatherList.addWeather(`City: ${weather.name}`)
 
-  // make an LI
-  let weatherLI = document.createElement('li')
-  weatherLI.textContent = `${weather.main.temp} F`
-  // append that LI to the people UL
-  weatherView.appendChild(weatherLI)
+  const forecastList = new WeatherList('.forecast')
+  forecastList.addWeather('Tommorow it will be sunny')
+  forecastList.addWeather('Friday it will rain')
 
-  let weatherLIHumidity = document.createElement('li')
-  weatherLIHumidity.textContent = `${weather.main.humidity} Humidity`
-  // append that LI to the people UL
-  weatherView.appendChild(weatherLIHumidity)
-
-  let weatherLICity = document.createElement('li')
-  weatherLICity.textContent = `City: ${weather.name}`
-  // append that LI to the people UL
-  weatherView.appendChild(weatherLICity)
-
-  weatherAttributes.weather.forEach(weatherCondition => {
-    let weatherAttributes = document.createElement('li')
-    weatherAttributes.textContent = `${weather.weather.main}`
-    weatherView.appendChild(weatherAttributes)
-  })
   // append that LI to the people UL
 }
 
